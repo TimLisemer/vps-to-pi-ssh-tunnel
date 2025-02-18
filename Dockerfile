@@ -12,5 +12,5 @@ COPY entrypoint.sh .
 # Ensure the script has executable permissions
 RUN chmod +x entrypoint.sh
 
-# Set the entrypoint
-ENTRYPOINT ./entrypoint.sh
+# Set the entrypoint correctly
+ENTRYPOINT ["/bin/sh", "/app/entrypoint.sh"]
