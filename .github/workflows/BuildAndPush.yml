@@ -23,4 +23,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/TimLisemer/VPS-TO-PI-SSH-TUNNEL:latest
+          tags: ghcr.io/timlisemer/vps-to-pi-ssh-tunnel:latest
