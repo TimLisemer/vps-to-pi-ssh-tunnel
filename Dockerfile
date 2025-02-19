@@ -1,7 +1,7 @@
 FROM --platform=linux/arm64 alpine:latest
 
 # Install OpenSSH client and libcrypto
-RUN apk add --no-cache openssh libcrypto3
+RUN apk add --no-cache dropbear-scp
 
 WORKDIR /app
 COPY entrypoint.sh /app/entrypoint.sh
