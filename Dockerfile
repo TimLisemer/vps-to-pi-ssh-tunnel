@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM --platform=linux/arm64 alpine:latest
 
 # Install OpenSSH client
 RUN apk add --no-cache openssh
