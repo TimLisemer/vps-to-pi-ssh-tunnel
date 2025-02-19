@@ -4,7 +4,7 @@
 chmod 600 /root/.ssh/yakweide-tls-tunnel
 
 # Start the SSH tunnel
-sh -c "ssh -N \
+bash -c "ssh -N \
     -i /root/.ssh/yakweide-tls-tunnel \
     -o ServerAliveInterval=60 \
     -o ExitOnForwardFailure=yes \
