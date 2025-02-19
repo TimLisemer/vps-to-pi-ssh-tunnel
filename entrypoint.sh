@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 # Ensure SSH key has correct permissions
 chmod 600 /root/.ssh/yakweide-tls-tunnel
 
 # Start the SSH tunnel
-bash -c "ssh -N \
+sh -c "ssh -N \
     -i /root/.ssh/yakweide-tls-tunnel \
     -o ServerAliveInterval=60 \
     -o ExitOnForwardFailure=yes \
