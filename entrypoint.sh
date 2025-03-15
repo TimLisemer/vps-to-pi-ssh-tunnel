@@ -1,16 +1,27 @@
 #!/bin/sh
 
-echo "setting correct permissions for ssh key..."
+echo "Setting correct permissions for SSH key..."
 chmod 600 /root/.ssh/yakweide-tls-tunnel
 
-while true; do
-    echo "starting the ssh tunnel..."
-    dbclient -y -N \
-        -i /root/.ssh/yakweide-tls-tunnel \
-        -R *:8123:10.0.0.2:8123 \
-        -L 0.0.0.0:9001:localhost:9001 \
-        root@142.132.234.128
+# Ensure cleanup happens if the script is killed
+trap 'echo "Script interrupted, restarting..."; sleep 2; exec "$0"' INT TERM HUP
 
-    echo "ssh tunnel process has ended. restarting in 5 seconds..."
+while true; do
+    echo "Starting the SSH tunnel..."
+    
+    # Run dbclient in a subshell and capture its exit status
+    (
+        exec dbclient -y -N \
+            -i /root/.ssh/yakweide-tls-tunnel \
+            -R *:8123:10.0.0.2:8123 \
+            -L 0.0.0.0:9001:localhost:9001 \
+            root@142.132.234.128
+    )
+    
+    EXIT_CODE=$?
+    echo "SSH tunnel process has ended with exit code $EXIT_CODE."
+
+    # If the exit code indicates failure, sleep before restarting
+    echo "Restarting in 5 seconds..."
     sleep 5
 done
