@@ -18,6 +18,9 @@ while true; do
             -L 0.0.0.0:8384:localhost:8384 \
             -L 0.0.0.0:22000:localhost:22000 \
             -L 0.0.0.0:21027:localhost:21027 \
+            -L 0.0.0.0:8000:localhost:8000 \
+            -L 0.0.0.0:8081:localhost:8081 \
+            -L 0.0.0.0:8443:localhost:8443 \
             root@142.132.234.128
     )
     
