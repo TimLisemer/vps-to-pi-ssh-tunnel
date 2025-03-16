@@ -11,12 +11,11 @@ while true; do
     
     # Run dbclient in a subshell and capture its exit status
     (
-        exec dbclient -y -N \
-            -i /root/.ssh/yakweide-tls-tunnel \
-            -R *:8123:10.0.0.2:8123 \  # Home Assistant
-            -L 0.0.0.0:9001:localhost:9001 \  # Portainer Agent
-            -L 0.0.0.0:8085:localhost:8085 \  # Traefik
-            -L 0.0.0.0:8384:localhost:8384 \  # Syncthing
+        exec dbclient -y -N -i /root/.ssh/yakweide-tls-tunnel \
+            -R *:8123:10.0.0.2:8123 \
+            -L 0.0.0.0:9001:localhost:9001 \
+            -L 0.0.0.0:8085:localhost:8085 \
+            -L 0.0.0.0:8384:localhost:8384 \
             -L 0.0.0.0:22000:localhost:22000 \
             -L 0.0.0.0:21027:localhost:21027 \
             root@142.132.234.128
